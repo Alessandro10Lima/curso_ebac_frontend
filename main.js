@@ -5,11 +5,11 @@ let formValido = false;
 
 function validaNumero(numero) {
     const segundoNumero = numero;
-    return segundoNumero.value > primeiroNumero.value;
+    return segundoNumero - primeiroNumero.value > 0;
 }
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    const mensagemSucesso = `Parabéns! O segundo número: <b>${segundoNumero.value}</b> é maior que: <b>${primeiroNumero.value}</b>`;
+    const mensagemSucesso = `Parabéns! O número <b>${segundoNumero.value}</b> é maior que <b>${primeiroNumero.value}</b>`;
     
     formValido = validaNumero(segundoNumero.value);
     if (formValido) {
@@ -25,7 +25,7 @@ form.addEventListener('submit', function(e) {
     }
 })
 segundoNumero.addEventListener('keyup', function(e) {
-    console.log(e.target.value);
+    console.log(e.value);
     formValido = validaNumero(e.target.value);
 
     if(!formValido){
@@ -33,6 +33,6 @@ segundoNumero.addEventListener('keyup', function(e) {
         document.querySelector('.error-msn').style.display = 'block';
     } else{
         segundoNumero.classList.remove('error');
-        document.querySelector('error-msn').style.display = 'none';
+        document.querySelector('.error-msn').style.display = 'none';
     }
 })
